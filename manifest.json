@@ -1,0 +1,22 @@
+{
+	"manifest_version": 2,
+	"name": "MinehutConsole",
+	"description": "Implements a live console tab to Minehut's dashboard",
+	"version": "1.0",
+	"icons": {
+		"48": "images/icon48.png"
+	},
+	"content_scripts": [{
+		"matches": ["*://*.minehut.com/dashboard/*"],
+		"js": ["js/inject.js"]
+	}],
+	"web_accessible_resources": [
+		"css/*.css",
+		"js/*.js",
+		"thirdParty/*.js"
+	],
+	"permissions": [
+		"http://minehut.com/*",
+		"https://minehut.com/*"
+	]
+}
