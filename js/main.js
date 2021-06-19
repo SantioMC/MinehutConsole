@@ -29,13 +29,16 @@ async function getServerLog(id, callback) {
 	$.ajax({
 		type: 'GET',
 		url: `${BASE_API}/file/${id}/read//logs/latest.log`,
+		timeout: 500,
 		headers: {
 			Authorization: _auth_token,
 			'X-Session-Id': _session_id,
 			'Content-Type': 'application/json'
 		},
 		success: callback,
-		error: callback
+		error: () => {
+			consoleWriteLine('[MinehutConsole] Failed to read your server logs, the file is likely too large to be read!', 'ERROR');
+		}
 	});
 }
 
